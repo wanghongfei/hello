@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="page">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element name="request" maxOccurs="unbounded">
+    				<xs:complexType>
+    					<xs:attribute name="url" type="xs:string" use="required"/>
+    					<xs:attribute name="role" type="xs:string" use="required"/>
+    				</xs:complexType>
+    			</xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+
+</xs:schema>
