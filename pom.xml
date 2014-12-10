@@ -12,8 +12,8 @@
 
     <modules>
 	    <module>hello-common</module>
-        <module>hello-service</module>
-        <!-- 暂时去掉WEB模块，专心编写Service -->
+        <!-- do not build servet module for the time being -->
+        <!--<module>hello-service</module>-->
         <module>hello-web</module>
     </modules>
 
