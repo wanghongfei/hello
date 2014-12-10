@@ -5,9 +5,14 @@ if ('WebSocket' in window) {
 
     console.log("connecting");
 
+    var json = {
+        session: "121211221",
+        text: "wo cao"
+    };
+
     socket.onopen = function() {
         console.log("connection to server opened!");
-        socket.send("hello, websocket!");
+        socket.send(JSON.stringify(json));
     }
 
     socket.onclose = function() {
