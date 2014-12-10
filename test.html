@@ -1,0 +1,25 @@
+<script>
+if ('WebSocket' in window) {
+    console.log("websocket supported");
+    var socket = new WebSocket("ws://localhost:8080//websocket");
+
+    console.log("connecting");
+
+    socket.onopen = function() {
+        console.log("connection to server opened!");
+        socket.send("hello, websocket!");
+    }
+
+    socket.onclose = function() {
+        console.log("connection to server closed!");
+    }
+
+    socket.onmessage = function(event) {
+        var msg = event.data;
+        console.log(msg);
+    }
+
+} else {
+    console.log("websocket not supported");
+}
+</script>
