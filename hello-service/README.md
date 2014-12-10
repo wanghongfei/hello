@@ -1,4 +1,7 @@
-# 分布式网站探索
+# Hello - Anonymous Chatting Website
 
-### 说明
-* 通过Spring RMI对外提供服务
+### Architecture
+* Service layer of this project, implemented by SpringRMI
+
+### Build
+* This is a Maven project therefore u should execute `mvn clean install`

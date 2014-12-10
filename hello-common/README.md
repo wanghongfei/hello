@@ -1,4 +1,7 @@
-# 分布式网站探索
+# Hello - Anonymous Chatting Website
 
-### 说明
-* Service层和Web层共用的包
+### Architecture
+* This module contains classes used in all layers
+
+### Build
+* This is a Maven project therefore u should execute `mvn clean install`

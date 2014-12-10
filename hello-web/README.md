@@ -1,5 +1,7 @@
-# 分布式网站探索
+# Hello - Anonymous Chatting Website
 
-### 说明
-* Web层，只包含jsp页面和Controller
-* 基于Spring, Spring MVC, Spring RMI实现
+### Architecture
+* Web layer of this project
+
+### Build
+* This is a Maven project therefore u should execute `mvn clean install`
