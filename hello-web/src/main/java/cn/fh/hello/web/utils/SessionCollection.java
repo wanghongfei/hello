@@ -1,7 +1,11 @@
 package cn.fh.hello.web.utils;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.socket.WebSocketSession;
 
@@ -12,25 +16,43 @@ import org.springframework.web.socket.WebSocketSession;
  */
 public class SessionCollection {
 	/**
-	 * A map to store WebSocketSession. The key of this map is session id
+	 * A map to store WebSocketSession.
+	 * <p> Key: HTTP session id, Value: WebSocketSession object
 	 */
 	private static Map<String, WebSocketSession> socketSessionMap = new HashMap<String, WebSocketSession>();
+	/**
+	 * A List to store HttpSession.
+	 */
+	private static List<HttpSession> httpSessionList = new LinkedList<HttpSession>();
 
 	private SessionCollection() {}
 	
 	
+	
+	public static void addHttpSession(HttpSession session) {
+		httpSessionList.add(session);
+	}
+	public static void removeHttpSession(HttpSession session) {
+		httpSessionList.remove(session);
+	}
+	public static int getHttpSessionAmount() {
+		return httpSessionList.size();
+	}
+	public static boolean containsHttpSession(HttpSession session) {
+		return httpSessionList.contains(session);
+	}
+	
+
+	
 	public static void putSocketSession(String sessionId, WebSocketSession sockSession) {
 		socketSessionMap.put(sessionId, sockSession);
 	}
-	
 	public static void removeSocketSession(String sessionId) {
 		socketSessionMap.remove(sessionId);
 	}
-	
 	public static boolean containsSocketSession(String sessionId) {
 		return socketSessionMap.containsKey(sessionId);
 	}
-	
 	public static int getSocketSessionAmount() {
 		return socketSessionMap.size();
 	}
@@ -38,6 +60,9 @@ public class SessionCollection {
 
 	public static Map<String, WebSocketSession> getSocketSessionMap() {
 		return socketSessionMap;
+	}
+	public static List<HttpSession> getHttpSessionMap() {
+		return httpSessionList;
 	}
 	
 }

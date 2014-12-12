@@ -82,9 +82,13 @@
 	
 	
 	<!-- WebScoket configuration -->
-	<beans:bean id="websocket" class="cn.fh.hello.web.websocket.WebsocketEndPoint" />
+	<!-- Anonymous -->
+	<beans:bean id="anonymousWebsocket" class="cn.fh.hello.web.websocket.AnonymousWebsocketEndPoint" />
+	<beans:bean id="loginWebsocket" class="cn.fh.hello.web.websocket.LoginWebsocketEndPoint" />
+	<!-- login required -->
 	<websocket:handlers>
-		<websocket:mapping handler="websocket" path="/websocket"/>
+		<websocket:mapping handler="anonymousWebsocket" path="/websocket/anonymous"/>
+		<websocket:mapping handler="loginWebsocket" path="/websocket/login"/>
 	</websocket:handlers>
 
 

@@ -11,5 +11,6 @@ public class Constant {
 		public static String MESSAGE_CONTENT = "text";
 		public static String TARGET_USER_ID = "tid";
 
+		public static String NOT_LOGIN = "none";
 	}
 }

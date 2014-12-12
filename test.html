@@ -1,12 +1,14 @@
 <script>
 if ('WebSocket' in window) {
     console.log("websocket supported");
-    var socket = new WebSocket("ws://localhost:8080//websocket");
+    var socket = new WebSocket("ws://localhost:8080//websocket/anonymous");
+    //var socket = new WebSocket("ws://localhost:8080//websocket/login");
 
     console.log("connecting");
 
     var json = {
         sid: "121211221",
+        //sid: "none",
         text: "wo cao",
         tid: "bruce"
     };

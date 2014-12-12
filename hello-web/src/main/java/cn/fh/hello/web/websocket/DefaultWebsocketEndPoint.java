@@ -14,8 +14,8 @@ import cn.fh.hello.common.component.Constant;
 import cn.fh.hello.common.component.JsonWrapper;
 import cn.fh.hello.web.utils.SessionCollection;
 
-public class WebsocketEndPoint extends TextWebSocketHandler {
-	public static Logger logger = LoggerFactory.getLogger(WebsocketEndPoint.class);
+public class DefaultWebsocketEndPoint extends TextWebSocketHandler {
+	public static Logger logger = LoggerFactory.getLogger(DefaultWebsocketEndPoint.class);
 
 	/**
 	 * Store Socket session in SessionCollection if this is the first message received.
@@ -38,6 +38,17 @@ public class WebsocketEndPoint extends TextWebSocketHandler {
 			logger.debug("socket message received(original): " + jsonStr);
 			logger.debug("socket message received(parsed): " + sId + "," + text + "target:" + targetUserId);
 		}
+		
+		if (isLoginNeeded()) {
+			boolean isLogin = !sId.equals(Constant.WebSocketJsonParam.NOT_LOGIN);
+			// have not logged in
+			if (false == isLogin) {
+				session.sendMessage(new TextMessage("not logged in"));
+				session.close(CloseStatus.BAD_DATA);
+
+				return;
+			}
+		}
 
 		// store SocketSession and http session id
 		// if this is the first message received by particular client
@@ -49,6 +60,17 @@ public class WebsocketEndPoint extends TextWebSocketHandler {
 		//WebSocketSender.sendToAll("server response message", 1000);
 
 		
+	}
+	
+	/**
+	 * Derived class must implement this method 
+	 * to determine whether login is needed.
+	 * 
+	 * <p> Default is true.
+	 * @return
+	 */
+	protected boolean isLoginNeeded() {
+		return true;
 	}
 
 	/**
