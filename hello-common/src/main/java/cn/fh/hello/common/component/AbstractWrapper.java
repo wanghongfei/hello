@@ -13,6 +13,12 @@ import javax.json.JsonValue;
 
 import cn.fh.hello.common.component.utils.StringUtils;
 
+/**
+ * This is a JSON string wrapper class which encapsulate JSON string 
+ * and provides multiply read methods
+ * @author whf
+ *
+ */
 public abstract class AbstractWrapper {
 	protected boolean result = false;
 
@@ -25,7 +31,8 @@ public abstract class AbstractWrapper {
 	
 
 	/**
-	 * Derived class might override this method to perform its own parse logic.
+	 * Convert JSON string to JsonObject.
+	 * <p> Derived class might override this method to perform its own parse logic.
 	 */
 	protected void parseJson() {
 		// Json has already been parsed
@@ -36,31 +43,38 @@ public abstract class AbstractWrapper {
 			throw new IllegalStateException("json string is null or empty");
 		}
 		
-		// read Json string
+		// Convert json string to JsonObject
 		JsonReader reader = Json.createReader(new StringReader(jsonString));
 		JsonObject obj = reader.readObject();
+
 		// loop value
-		this.jsonMap = new HashMap<String, String>();
+		Map<String, String> tempJsonMap = new HashMap<String, String>();
 		Set<Entry<String, JsonValue>> entrySet = obj.entrySet();
 		for (Entry<String, JsonValue> entry : entrySet) {
 			String name = entry.getKey();
 			String value = StringUtils.trimQuotation(entry.getValue().toString());
 			
-			jsonMap.put(name, value);
+			tempJsonMap.put(name, value);
 		}
-
+		
+		
+		this.jsonMap = tempJsonMap;
 	}
 	
-	public String getValue(String key) {
+	public final String getValue(String key) {
 		parseJson();
 		return jsonMap.get(key);
 	}
 	
-	public boolean isSucceeded() {
+	public final int getObjectAmount() {
+		return jsonMap.size();
+	}
+	
+	public final boolean isSucceeded() {
 		return this.result;
 	}
 	
-	public String getJsonString() {
+	public final String getJsonString() {
 		return this.jsonString;
 	}
 }
