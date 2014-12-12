@@ -10,6 +10,7 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import cn.fh.hello.common.component.Constant;
 import cn.fh.hello.common.component.JsonWrapper;
 import cn.fh.hello.web.utils.SessionCollection;
 
@@ -29,12 +30,13 @@ public class WebsocketEndPoint extends TextWebSocketHandler {
 		// parse json string
 		JsonWrapper jw = new JsonWrapper(jsonStr);
 
-		String sId = jw.getValue("session");
-		String text = jw.getValue("text");
+		String sId = jw.getValue(Constant.WebSocketJsonParam.SESSION_ID);
+		String text = jw.getValue(Constant.WebSocketJsonParam.MESSAGE_CONTENT);
+		String targetUserId = jw.getValue(Constant.WebSocketJsonParam.TARGET_USER_ID);
 		
 		if (logger.isDebugEnabled()) {
 			logger.debug("socket message received(original): " + jsonStr);
-			logger.debug("socket message received(parsed): " + sId + "," + text);
+			logger.debug("socket message received(parsed): " + sId + "," + text + "target:" + targetUserId);
 		}
 
 		// store SocketSession and http session id
