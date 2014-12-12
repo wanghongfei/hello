@@ -7,3 +7,6 @@
 
 ### Build
 * This is a Maven project therefore u should execute `mvn clean install`
+
+### Tested Browsers
+* Chrome-39.0.2171.95
