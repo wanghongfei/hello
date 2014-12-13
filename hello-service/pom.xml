@@ -214,7 +214,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>ezoo</finalName>
+		<finalName>hello-service</finalName>
 		<!-- <sourceDirectory>src/main/java</sourceDirectory> -->
 		<plugins>
 

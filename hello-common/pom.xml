@@ -125,7 +125,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>distribute-common</finalName>
+		<finalName>hello-common</finalName>
 		<plugins>
 
 			<plugin>

@@ -226,7 +226,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>ezoo</finalName>
+		<finalName>hello-web</finalName>
 		<plugins>
 
 			<plugin>
