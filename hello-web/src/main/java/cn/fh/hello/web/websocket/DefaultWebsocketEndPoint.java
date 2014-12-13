@@ -39,6 +39,13 @@ public class DefaultWebsocketEndPoint extends TextWebSocketHandler {
 			logger.debug("socket message received(parsed): " + sId + "," + text + "target:" + targetUserId);
 		}
 		
+		if (null == sId) {
+			session.sendMessage(new TextMessage("lack sid field"));
+			session.close(CloseStatus.BAD_DATA);
+
+			return;
+		}
+		
 		if (isLoginNeeded()) {
 			boolean isLogin = !sId.equals(Constant.WebSocketJsonParam.NOT_LOGIN);
 			// have not logged in
