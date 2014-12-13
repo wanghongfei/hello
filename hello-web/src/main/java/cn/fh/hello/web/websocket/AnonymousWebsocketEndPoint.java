@@ -1,7 +1,7 @@
 package cn.fh.hello.web.websocket;
 
 /**
- * Chat withoud login
+ * Chat without login
  * @author whf
  *
  */
