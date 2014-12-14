@@ -6,7 +6,7 @@
   <name>hello-service</name>
   <version>1.0.0-BUILD-SNAPSHOT</version>
   <build>
-    <finalName>ezoo</finalName>
+    <finalName>hello-service</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
@@ -20,7 +20,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>cn.fh.App</mainClass>
+                  <mainClass>cn.fh.hello.service.StartUp</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -54,55 +54,15 @@
       </plugin>
     </plugins>
   </build>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>hamcrest-core</artifactId>
-          <groupId>org.hamcrest</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>commons-dbcp</groupId>
-      <artifactId>commons-dbcp</artifactId>
-      <version>1.4</version>
-      <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>commons-pool</artifactId>
-          <groupId>commons-pool</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <version>1.4.182</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>3.0.1</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet.jsp</groupId>
-      <artifactId>jsp-api</artifactId>
-      <version>2.2</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
   <properties>
-    <org.aspectj-version>1.7.3</org.aspectj-version>
+    <logback.version>1.0.13</logback.version>
+    <hibernate.version>4.2.1.Final</hibernate.version>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <slf4jVersion>1.7.7</slf4jVersion>
-    <spring.version>4.0.1.RELEASE</spring.version>
-    <java-version>1.8</java-version>
+    <spring-framework.version>4.0.1.RELEASE</spring-framework.version>
+    <java.version>1.8</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <junit.version>4.11</junit.version>
   </properties>
 </project>
 
