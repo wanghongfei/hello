@@ -1,4 +1,4 @@
-package cn.fh.hello.service;
+package cn.fh.hello.common.service;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

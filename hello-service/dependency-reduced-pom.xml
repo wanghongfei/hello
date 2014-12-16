@@ -20,7 +20,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>cn.fh.hello.service.StartUp</mainClass>
+                  <mainClass>cn.fh.hello.common.service.StartUp</mainClass>
                 </transformer>
               </transformers>
             </configuration>

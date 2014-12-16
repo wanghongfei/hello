@@ -78,7 +78,7 @@
 
 
 
-	<context:component-scan base-package="cn.fh.ezoo" />
+	<context:component-scan base-package="cn.fh.hello.web" />
 	
 	
 	<!-- WebScoket configuration -->
@@ -90,6 +90,16 @@
 		<websocket:mapping handler="anonymousWebsocket" path="/websocket/anonymous"/>
 		<websocket:mapping handler="loginWebsocket" path="/websocket/login"/>
 	</websocket:handlers>
+	
+	
+	<!-- Spring RMI -->
+	<beans:bean id="nameService"
+		class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		
+	<beans:property name="serviceUrl" value="rmi://localhost:8000/NameService" />
+	<beans:property name="serviceInterface" value="cn.fh.hello.common.service.NameService" />
+
+	</beans:bean>
 
 
 </beans:beans>
