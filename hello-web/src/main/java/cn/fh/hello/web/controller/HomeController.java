@@ -22,6 +22,6 @@ public class HomeController {
 			logger.debug(nameService.greeting("Neo"));
 		}
 		
-		return "";
+		return "dog";
 	}
 }

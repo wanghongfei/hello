@@ -5,3 +5,6 @@
 
 ### Build
 * This is a Maven project therefore u should execute `mvn clean install`
+
+### Execution
+* `java -jar target/hello.service.jar`
