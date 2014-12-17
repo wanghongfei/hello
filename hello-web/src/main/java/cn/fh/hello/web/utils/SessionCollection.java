@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -29,6 +31,14 @@ public class SessionCollection {
 	
 	
 	
+	public static HttpSession getHttpSession(String sessionId) {
+		Optional<HttpSession> optTargetSession = httpSessionList
+				.stream()
+				.filter( (HttpSession session) -> session.getId().equals(sessionId) )
+				.findFirst();
+		
+		return optTargetSession.isPresent() ? optTargetSession.get() : null;
+	}
 	public static void addHttpSession(HttpSession session) {
 		httpSessionList.add(session);
 	}
@@ -44,6 +54,15 @@ public class SessionCollection {
 	
 
 	
+	public static WebSocketSession getSocketSession(String httpSessionId) {
+		Optional<WebSocketSession> optSocketSession = socketSessionMap.entrySet()
+				.stream()
+				.filter( (entry) ->  entry.getKey().equals(httpSessionId) )
+				.map( Entry::getValue )
+				.findFirst();
+		
+		return optSocketSession.isPresent() ? optSocketSession.get() : null;
+	}
 	public static void putSocketSession(String sessionId, WebSocketSession sockSession) {
 		socketSessionMap.put(sessionId, sockSession);
 	}
