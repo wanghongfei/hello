@@ -4,7 +4,6 @@
 # author: wanghongfei
 # 2014.12.18
 
-declare PARAM="clean install -Dmaven.test.skip=true"
 
 if [ "$1" == "help" ]; then
     echo "example:"
@@ -14,8 +13,12 @@ if [ "$1" == "help" ]; then
     exit 0
 fi
 
+declare PARAM=""
+
 if [ "$1" == "test" ]; then
     PARAM="test"
+elif [ "$1" = "" ]; then
+    PARAM="clean install -Dmaven.test.skip=true"
 else
     echo "invalid parameter $1"
     exit 0
