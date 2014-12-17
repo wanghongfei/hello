@@ -13,6 +13,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import cn.fh.hello.common.component.Constant;
 import cn.fh.hello.common.component.JsonWrapper;
 import cn.fh.hello.web.utils.SessionCollection;
+import cn.fh.hello.web.utils.WebSocketDispatcher;
 
 public class DefaultWebsocketEndPoint extends TextWebSocketHandler {
 	public static Logger logger = LoggerFactory.getLogger(DefaultWebsocketEndPoint.class);
@@ -62,6 +63,15 @@ public class DefaultWebsocketEndPoint extends TextWebSocketHandler {
 		if ( false == SessionCollection.containsSocketSession(sId) ) {
 			SessionCollection.putSocketSession(sId, session);
 		}
+		
+		// send message
+		boolean result = WebSocketDispatcher.dispatchMessage(sId, text);
+		// tell sender that this message failed to send
+		if (false == result) {
+			JsonWrapper json = new JsonWrapper(false, "fail");
+			TextMessage msg = new TextMessage(json.getJsonString());
+			session.sendMessage(msg);
+		}
 
 		
 		//WebSocketSender.sendToAll("server response message", 1000);
@@ -104,14 +114,15 @@ public class DefaultWebsocketEndPoint extends TextWebSocketHandler {
 		SessionCollection.removeSocketSession(targetSessionId);*/
 		
 		// the JDK8 Stream way: better readability and performance
-		Optional<Entry<String, WebSocketSession>> targetEntry = SessionCollection.getSocketSessionMap().entrySet()
+		Optional<String> targetId = SessionCollection.getSocketSessionMap().entrySet()
 				.parallelStream()
 				//.stream()
-				.filter( (Entry<String, WebSocketSession> entry) -> entry.getValue().getId().equals(session.getId()) )
+				.filter( (entry) -> entry.getValue().getId().equals(session.getId()) )
+				.map( Entry::getKey )
 				.findFirst();
 		// target found
-		if ( targetEntry.isPresent() ) {
-			String httpSessionId = targetEntry.get().getKey();
+		if ( targetId.isPresent() ) {
+			String httpSessionId = targetId.get();
 			SessionCollection.removeSocketSession(httpSessionId);
 		}
 
