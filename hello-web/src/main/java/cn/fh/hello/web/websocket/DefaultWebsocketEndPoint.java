@@ -66,7 +66,7 @@ public class DefaultWebsocketEndPoint extends TextWebSocketHandler {
 		
 		// send message
 		boolean result = WebSocketDispatcher.dispatchMessage(sId, text);
-		// tell sender that this message failed to send
+		// tell the sender that message failed to send
 		if (false == result) {
 			JsonWrapper json = new JsonWrapper(false, "fail");
 			TextMessage msg = new TextMessage(json.getJsonString());

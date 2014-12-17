@@ -12,8 +12,11 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import cn.fh.hello.web.controller.HomeController;
 import cn.fh.hello.web.test.BaseTestClass;
+import cn.fh.hello.web.test.RMIConfigBean;
 
-@ContextConfiguration(classes = { HomeController.class })
+//@ContextConfiguration(classes = { HomeController.class,
+								//RMIConfigBean.class})
+//@ContextConfiguration(locations = {"classpath:spring-config.xml"} )
 public class HomeControllerTest extends BaseTestClass {
 	@Autowired
 	private HomeController homeController;
@@ -29,6 +32,7 @@ public class HomeControllerTest extends BaseTestClass {
 
 	@Test
 	public void test() throws Exception {
+		System.out.println("~~~~~~~~~~~~~~");
 		mock.perform(get("/"))
         			.andExpect(status().isOk());
 	}

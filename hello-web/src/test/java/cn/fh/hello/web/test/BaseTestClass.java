@@ -6,8 +6,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {RMIConfigBean.class,
-								WebConfigBean.class})
+@ContextConfiguration(locations = {"classpath:spring-config.xml"} )
+//@ContextConfiguration(classes = {WebConfigBean.class})
 //@TransactionConfiguration
 //@Transactional(readOnly = true)
 @WebAppConfiguration
