@@ -52,6 +52,8 @@ public abstract class AbstractWrapper {
 		Set<Entry<String, JsonValue>> entrySet = obj.entrySet();
 		for (Entry<String, JsonValue> entry : entrySet) {
 			String name = entry.getKey();
+			// the value string is surrounded by quotations
+			// so we need to trim them off
 			String value = StringUtils.trimQuotation(entry.getValue().toString());
 			
 			tempJsonMap.put(name, value);

@@ -13,15 +13,21 @@ import cn.fh.hello.common.service.NameService;
 public class HomeController {
 	public static Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	@Autowired
-	private NameService nameService;
+	//@Autowired
+	//private NameService nameService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
-		if (logger.isDebugEnabled()) {
+/*		if (logger.isDebugEnabled()) {
 			logger.debug(nameService.greeting("Neo"));
-		}
+		}*/
 		
-		return "dog";
+		return "home";
+	}
+
+	@RequestMapping(value = "/session", method = RequestMethod.GET)
+	public String session() {
+		
+		return "session";
 	}
 }
