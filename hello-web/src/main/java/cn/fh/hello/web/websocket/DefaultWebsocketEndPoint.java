@@ -31,13 +31,15 @@ public class DefaultWebsocketEndPoint extends TextWebSocketHandler {
 		// parse json string
 		JsonWrapper jw = new JsonWrapper(jsonStr);
 
+		// id of sender's session
 		String sId = jw.getValue(Constant.WebSocketJsonParam.SESSION_ID);
 		String text = jw.getValue(Constant.WebSocketJsonParam.MESSAGE_CONTENT);
-		String targetUserId = jw.getValue(Constant.WebSocketJsonParam.TARGET_USER_ID);
+		// id of receiver's session
+		String tid = jw.getValue(Constant.WebSocketJsonParam.TARGET_USER_ID);
 		
 		if (logger.isDebugEnabled()) {
 			logger.debug("socket message received(original): " + jsonStr);
-			logger.debug("socket message received(parsed): " + sId + "," + text + "target:" + targetUserId);
+			logger.debug("socket message received(parsed): " + sId + "," + text + "target:" + tid);
 		}
 		
 		if (null == sId) {
@@ -65,7 +67,7 @@ public class DefaultWebsocketEndPoint extends TextWebSocketHandler {
 		}
 		
 		// send message
-		boolean result = WebSocketDispatcher.dispatchMessage(sId, text);
+		boolean result = WebSocketDispatcher.dispatchMessage(tid, text);
 		// tell the sender that message failed to send
 		if (false == result) {
 			JsonWrapper json = new JsonWrapper(false, "fail");
