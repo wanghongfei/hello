@@ -15,6 +15,11 @@ import cn.fh.hello.common.component.JsonWrapper;
 import cn.fh.hello.web.utils.SessionCollection;
 import cn.fh.hello.web.utils.WebSocketDispatcher;
 
+/**
+ * Base class for WebSocket end point
+ * @author whf
+ *
+ */
 public class DefaultWebsocketEndPoint extends TextWebSocketHandler {
 	public static Logger logger = LoggerFactory.getLogger(DefaultWebsocketEndPoint.class);
 
@@ -64,6 +69,10 @@ public class DefaultWebsocketEndPoint extends TextWebSocketHandler {
 		// if this is the first message received by particular client
 		if ( false == SessionCollection.containsSocketSession(sId) ) {
 			SessionCollection.putSocketSession(sId, session);
+
+			if (logger.isDebugEnabled()) {
+				logger.debug("new session :<" + sId + ">, added to collection");
+			}
 		}
 		
 		// send message
@@ -73,6 +82,16 @@ public class DefaultWebsocketEndPoint extends TextWebSocketHandler {
 			JsonWrapper json = new JsonWrapper(false, "fail");
 			TextMessage msg = new TextMessage(json.getJsonString());
 			session.sendMessage(msg);
+
+			if (logger.isDebugEnabled()) {
+				logger.debug("message dispatch to " + tid + " failed");
+			}
+			
+			return;
+		}
+		
+		if (logger.isDebugEnabled()) {
+			logger.debug("message dispatched to " + tid + " successfully");
 		}
 
 		
