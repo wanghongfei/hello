@@ -2,7 +2,9 @@
 
 ### Architecture(架构)
 * Updated to JDK8(更新至JDK8)
-* Implemented by Spring4, SpringMVC, JPA2, **SpringRMI** and **WebSocket**
+* hello-common: Classes used by all modules
+* hello-service: Service layer implemented by **SpringRMI**, Spring4 and JPA2
+* hello-web: Web layer implemented by **WebSocket** and SpringMVC
 * This project is designed to be distributed(这一个分布式应用)
 
 ### Build(构建)
