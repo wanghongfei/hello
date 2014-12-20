@@ -3,17 +3,19 @@ package cn.fh.hello.service.impl;
 import java.util.List;
 import java.util.Random;
 
+import cn.fh.hello.common.dto.MemberInfoDto;
+
 /**
  * Encapsulate default match logic
  * @author whf
  *
  */
 public abstract class AbstractUserMatcher {
-	protected List<String> sessionIdList;
+	protected List<MemberInfoDto> memberInfoList;
 	protected int totalAvailableAmount;
 	
 	abstract int getTotalAvailableAmount();
-	abstract List<String> getSessionIdList();
+	abstract List<MemberInfoDto> getMemberInfoList();
 
 	/**
 	 * Generate an integer between 0 ~ total-1.
@@ -29,6 +31,7 @@ public abstract class AbstractUserMatcher {
 		
 		return next;
 	}
+
 	
 	/**
 	 * Get next matched session id.
@@ -37,6 +40,6 @@ public abstract class AbstractUserMatcher {
 	protected final String nextSessionId() {
 		int pos = nextInt();
 
-		return getSessionIdList().get(pos);
+		return getMemberInfoList().get(pos).getSessionId();
 	}
 }

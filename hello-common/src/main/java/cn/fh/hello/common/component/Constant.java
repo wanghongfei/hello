@@ -13,4 +13,16 @@ public class Constant {
 
 		public static String NOT_LOGIN = "none";
 	}
+	
+	public static enum EmotionalStatus {
+		SINGLE,
+		IN_LOVE,
+		MARRIED,
+		DIVORCED
+	}
+	
+	public static enum Gender {
+		MALE,
+		FEMALE
+	}
 }
