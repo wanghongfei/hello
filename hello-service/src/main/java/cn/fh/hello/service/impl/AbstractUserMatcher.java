@@ -11,10 +11,23 @@ import cn.fh.hello.common.dto.MemberInfoDto;
  *
  */
 public abstract class AbstractUserMatcher {
+	/**
+	 * unfiltered List for MemberInfoDto
+	 */
 	protected List<MemberInfoDto> memberInfoList;
+	/**
+	 * the actual amount of users that can be chosen for match
+	 */
 	protected int totalAvailableAmount;
 	
+	/**
+	 * get the actual amount of users that can be chosen for match
+	 */
 	abstract int getTotalAvailableAmount();
+	/**
+	 * get unfiltered List for MemberInfoDto
+	 * @return
+	 */
 	abstract List<MemberInfoDto> getMemberInfoList();
 
 	/**
@@ -24,6 +37,7 @@ public abstract class AbstractUserMatcher {
 	 * @return
 	 */
 	protected int nextInt() {
+		// getTotalAvailableAmount() is implemented by derived class
 		int tot = getTotalAvailableAmount();
 
 		Random rand = new Random(System.currentTimeMillis());

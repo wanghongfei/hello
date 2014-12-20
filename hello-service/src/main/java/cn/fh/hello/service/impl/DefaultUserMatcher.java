@@ -11,6 +11,8 @@ import cn.fh.hello.common.service.UserMatcher;
 
 /**
  * Match user without restriction.
+ * <p> This is the default implementation for AbstractUserMatcher
+ * 
  * @author whf
  *
  */
@@ -18,9 +20,21 @@ import cn.fh.hello.common.service.UserMatcher;
 public class DefaultUserMatcher extends AbstractUserMatcher implements
 		UserMatcher {
 	
+	/**
+	 * The rules for filter
+	 */
 	protected Predicate<MemberInfoDto> predicate;
+	/**
+	 * List for MemberInfoList after filtering
+	 */
 	protected List<MemberInfoDto> filteredMemberInfoList;
 
+	/**
+	 * Construct a DefaultUserMatcher object.
+	 * 
+	 * @param memberInfoList A List for MemberInfoList
+	 * @param predicate Filter rules. memberInfoList will be trimmed using this Predicate. Pass null for no filter.
+	 */
 	public DefaultUserMatcher(List<MemberInfoDto> memberInfoList, Predicate<MemberInfoDto> predicate) {
 		this.memberInfoList = memberInfoList;
 		this.totalAvailableAmount = memberInfoList.size();
@@ -31,6 +45,9 @@ public class DefaultUserMatcher extends AbstractUserMatcher implements
 		}
 	}
 
+	/**
+	 * get the actual amount of users that can be chosen for match
+	 */
 	@Override
 	public int getTotalAvailableAmount() {
 		if (null != this.filteredMemberInfoList) {
@@ -40,6 +57,9 @@ public class DefaultUserMatcher extends AbstractUserMatcher implements
 		return this.totalAvailableAmount;
 	}
 
+	/**
+	 * get the filtered List for MemberInfoDto
+	 */
 	@Override
 	protected List<MemberInfoDto> getMemberInfoList() {
 		// filter original List
@@ -61,7 +81,7 @@ public class DefaultUserMatcher extends AbstractUserMatcher implements
 
 	@Override
 	public String getMatchedSessionId() {
-		return nextSessionId();
+		return super.nextSessionId();
 	}
 
 
