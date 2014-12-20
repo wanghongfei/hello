@@ -69,14 +69,15 @@
     </dependency>
   </dependencies>
   <properties>
-    <logback.version>1.0.13</logback.version>
-    <hibernate.version>4.2.1.Final</hibernate.version>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <slf4jVersion>1.7.7</slf4jVersion>
-    <spring-framework.version>4.0.1.RELEASE</spring-framework.version>
-    <java.version>1.8</java.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.11</junit.version>
+    <java.version>1.8</java.version>
+    <spring-framework.version>4.0.1.RELEASE</spring-framework.version>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <hibernate.version>4.2.1.Final</hibernate.version>
+    <logback.version>1.0.13</logback.version>
+    <org.aspectj-version>1.7.3</org.aspectj-version>
   </properties>
 </project>
 
