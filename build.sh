@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Convenient scirpt for building and testing
+# Convenient script for building and testing
 # author: wanghongfei
 # 2014.12.18
 
