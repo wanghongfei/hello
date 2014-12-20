@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:websocket="http://www.springframework.org/schema/websocket"
-	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jee="http://www.springframework.org/schema/jee"
 	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -32,50 +32,13 @@
 
 
 
-	<!-- 容器管理的JPA -->
-	<beans:bean id="emf"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<beans:property name="dataSource" ref="dataSource" />
-		<beans:property name="jpaVendorAdapter" ref="jpaAdapter" />
-		<beans:property name="packagesToScan" value="cn.fh.hello.service.model" />
-		<beans:property name="jpaPropertyMap">
-			<beans:props>
-				<beans:prop key="hibernate.show_sql">true</beans:prop>
-				<beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>
-				<beans:prop key="hibernate.format_sql">true</beans:prop>
-				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
-				</beans:prop>
-				<!-- 开启L2 cache -->
-				<beans:prop key="hibernate.cache.use_second_level_cache">true</beans:prop>
-			</beans:props>
-		</beans:property>
-
-	</beans:bean>
-	<beans:bean id="jpaAdapter"
-		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-		<beans:property name="database" value="MYSQL" />
-	</beans:bean>
-
-	<jee:jndi-lookup id="dataSource" jndi-name="java:jboss/datasources/hello"
-		resource-ref="true" />
-
-	<beans:bean
-		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
-
-	<!-- 事务 -->
-	<beans:bean class="org.springframework.orm.jpa.JpaTransactionManager"
-		id="transactionManager">
-		<beans:property name="entityManagerFactory" ref="emf" />
-	</beans:bean>
+	
 
 	<!-- 文件上传 -->
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="524288000" /> <!-- 500M -->
 	</beans:bean>
-
-	<tx:annotation-driven />
-
 
 
 	<context:component-scan base-package="cn.fh.hello.web" />
