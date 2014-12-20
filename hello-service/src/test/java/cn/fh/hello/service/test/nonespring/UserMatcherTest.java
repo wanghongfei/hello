@@ -11,6 +11,7 @@ import org.junit.Test;
 import cn.fh.hello.common.component.Constant.EmotionalStatus;
 import cn.fh.hello.common.component.Constant.Gender;
 import cn.fh.hello.common.dto.MemberInfoDto;
+import cn.fh.hello.common.exception.unchecked.ClassNotInitializedException;
 import cn.fh.hello.common.service.UserMatcher;
 import cn.fh.hello.service.impl.DefaultUserMatcher;
 
@@ -29,6 +30,19 @@ public class UserMatcherTest {
 				new MemberInfoDto("ggg", 22, "山东", "临沂", Gender.FEMALE, EmotionalStatus.DIVORCED)
 		}) );
 
+	}
+	
+	@Test
+	public void testInitObject() {
+		UserMatcher matcher = new DefaultUserMatcher();
+		boolean isExceptionThrown = false;
+		try {
+			matcher.getMatchedSessionId();
+		} catch (ClassNotInitializedException ex) {
+			isExceptionThrown = true;
+		}
+		
+		Assert.assertTrue(isExceptionThrown);
 	}
 
 	@Test

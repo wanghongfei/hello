@@ -12,10 +12,17 @@
 
 	<context:component-scan base-package="cn.fh.hello.service" />
 
+	<!-- RMI service -->
  	<bean class="org.springframework.remoting.rmi.RmiServiceExporter">
 		<property name="serviceName" value="NameService" />
 		<property name="service" ref="defaultNameService" />
 		<property name="serviceInterface" value="cn.fh.hello.common.service.NameService" />
+		<property name="registryPort" value="8000" />
+	</bean>
+ 	<bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+		<property name="serviceName" value="UserMatcherService" />
+		<property name="service" ref="defaultUserMatcher" />
+		<property name="serviceInterface" value="cn.fh.hello.common.service.UserMatcher" />
 		<property name="registryPort" value="8000" />
 	</bean>
 
