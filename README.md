@@ -10,4 +10,5 @@
 
 
 ### Tested Browsers
-* Chrome-39.0.2171.95
+* Chrome-39.0.2171.95 for Linux
+* Firefox-34.0 for Linux
