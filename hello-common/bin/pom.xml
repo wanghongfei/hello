@@ -4,19 +4,12 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cn.fh.hello</groupId>
-	<artifactId>hello-aggregate</artifactId>
+	<artifactId>hello-common</artifactId>
 
-	<name>hello-aggregate</name>
-	<packaging>pom</packaging>
+	<name>hello-common</name>
+	<packaging>jar</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
-
-    <modules>
-	    <module>hello-common</module>
-        <module>hello-service</module>
-        <module>hello-web</module>
-	<module>hello-security</module>
-    </modules>
-
+	
 	<properties>
 		<java-version>1.8</java-version>
 		<org.aspectj-version>1.7.3</org.aspectj-version>
@@ -25,15 +18,61 @@
 	</properties>
 
 	<dependencies>
+		<!-- 单元测试 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- Spring dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 
- 
- 	
+		
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- JSON API -->
+		<!-- <dependency>
+			<groupId>javax.json</groupId>
+			<artifactId>javax.json-api</artifactId>
+			<version>1.0</version>
+		</dependency> -->
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.json</artifactId>
+			<version>1.0.4</version>
+		</dependency>
+
+
+		<!-- SLF4j -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4jVersion}</version>
+		</dependency>
+		<!-- log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+
+
 	</dependencies>
-
 	<build>
-		<finalName>hello</finalName>
+		<finalName>hello-common</finalName>
 		<plugins>
-
 
 			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>
@@ -62,14 +101,9 @@
 				</configuration>
 			</plugin>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.2.1</version>
-				<configuration>
-					<mainClass>org.test.int1.Main</mainClass>
-				</configuration>
-			</plugin>
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>exec-maven-plugin</artifactId> 
+				<version>1.2.1</version> <configuration> <mainClass>org.test.int1.Main</mainClass> 
+				</configuration> </plugin> -->
 		</plugins>
 	</build>
 </project>

@@ -11,14 +11,14 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="cn.fh.hello.common">
+	<logger name="cn.fh.hello">
 		<level value="debug" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
-		<level value="debug" />
-	</logger>
+		<level value="info" />
+	</logger>	
 	
 	<logger name="org.springframework.beans">
 		<level value="info" />
@@ -29,12 +29,12 @@
 	</logger>
 
 	<logger name="org.springframework.web">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="warn" />
+		<priority value="info" />
 		<appender-ref ref="console" />
 	</root>
 	
