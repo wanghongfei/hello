@@ -129,13 +129,16 @@ public class PageProtectionFilter implements Filter {
 	 * @return
 	 */
 	private boolean checkRole(List<String> roleList, Credential credential) {
-		for (String role : roleList) {
+		return roleList.stream()
+			.anyMatch( (roleName) -> credential.hasRole(roleName) );
+
+/*		for (String role : roleList) {
 			if (false == credential.hasRole(role)) {
 				return false;
 			}
 		}
 		
-		return true;
+		return true;*/
 	}
 
 }
