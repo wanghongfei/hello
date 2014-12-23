@@ -17,9 +17,9 @@
 	</listener>
 
 	<!-- 此监听器用于载入security-page.xml -->
-	<!-- <listener>
-		<listener-class>cn.fh.ezoo.security.PageProtectionFilter</listener-class>
-	</listener> -->
+	<listener>
+		<listener-class>cn.fh.security.servlet.PageProtectionServlet</listener-class>
+	</listener>
 
 
 	<!-- Processes application requests -->
@@ -39,13 +39,14 @@
 	</servlet-mapping>
 
 	<!-- 控制页面访问权限的Filter -->
-	<!-- <filter>
+	<filter>
 		<filter-name>Security Filter</filter-name>
-		<filter-class>cn.fh.ezoo.security.PageProtectionFilter</filter-class>
+		<filter-class>cn.fh.security.servlet.PageProtectionFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>Security Filter</filter-name>
 		<servlet-name>appServlet</servlet-name>
-	</filter-mapping> -->
+	</filter-mapping>
+
 
 </web-app>

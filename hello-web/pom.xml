@@ -24,7 +24,12 @@
 			<artifactId>hello-common</artifactId>
 			<version>1.0.0-BUILD-SNAPSHOT</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>cn.fh</groupId>
+			<artifactId>web-security</artifactId>
+			<version>1.0-RELEASE</version>
+		</dependency>
+
 		<!-- Spring WebSocket support -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -36,8 +41,8 @@
 			<artifactId>spring-messaging</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
-	
+
+
 		<!-- 单元测试 -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -109,7 +114,7 @@
 			<version>2.4</version>
 		</dependency>
 
-		
+
 
 		<!-- Servlet -->
 		<dependency>
@@ -192,16 +197,9 @@
 				</configuration>
 			</plugin>
 
-            <!--
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.2.1</version>
-				<configuration>
-					<mainClass>org.test.int1.Main</mainClass>
-				</configuration>
-			</plugin>
-            -->
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>exec-maven-plugin</artifactId> 
+				<version>1.2.1</version> <configuration> <mainClass>org.test.int1.Main</mainClass> 
+				</configuration> </plugin> -->
 		</plugins>
 	</build>
 </project>

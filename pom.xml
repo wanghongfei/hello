@@ -14,7 +14,6 @@
 	    <module>hello-common</module>
         <module>hello-service</module>
         <module>hello-web</module>
-	<module>hello-security</module>
     </modules>
 
 	<properties>
