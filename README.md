@@ -1,5 +1,5 @@
 # Hello - Anonymous Chatting Website(匿名在线聊天交友网站)
-This project has been removed to <https://github.com/wanghongfei/chat> using new framework(`Netty`) and new implementation.
+This project has been moved to <https://github.com/wanghongfei/chat> using new framework(`Netty`) and new implementation.
 
 ### Architecture(架构)
 * Updated to JDK8(更新至JDK8)
